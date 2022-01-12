@@ -1,5 +1,7 @@
 20220105 TEsts
 
+NÄCHSTES MAL SCREENSHOTS
+
 1
  zu Base_poses[0] fahren
  ggf. abbrechen und Tags verfolgen
@@ -8,9 +10,16 @@
  und zwischen Positionen alternieren
  (client wait for result?)
 
+
+3
 !!! Neue Pose nicht überladen
 	braucht Rechenzeit
  Pose nicht in einem Ziel setzen, 50cm Abstand sonst keine Movement.
+ 
+	Schusswartezeit nicht mit Wartezeit für Verfolgung gleichsetzen
+
+	Speichert Tags zu lange, fährt immer wieder dahin
+
 
 HEUTE GIT HUB :D
 die phasen
@@ -21,6 +30,11 @@ git add "name der Datei" #added geänderte Datei
 git commit 
 git push  # lädt Änderungen hoch
 
+
+!!!!!!!!!
+mapTransform auf ssh leo ausführen! 
+	wait for result wird sonst skipped
+	"This goal was canceled because another goal was recieved by the simple action server" bei einem gesendeten goal
 
 
 Aufgabe 3 

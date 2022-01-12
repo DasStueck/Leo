@@ -20,7 +20,7 @@ class LaserTag:
 
         self.startmove=True
         self.sortedDetections=[]
-        
+        self.posNo = 0
         self.letzterSchuss = 0
         
         #PlayerScore Sachen
@@ -53,31 +53,32 @@ class LaserTag:
         self.base_poses = []   
         rospy.sleep(1)
         rospy.loginfo("Intialisieren")     
-        self.base_points = [(4.5,-7),(6,-7)]
+        self.base_points = [(4.5,-7),(4.5,-7)]
         rospy.sleep(1)
         self.start_movement()
-        if self.startmove:        
-            while not self.sortedDetections: 
-                rospy.loginfo("move to pos0")  
-                #rospy.sleep(3)              
-                self.moving(self.base_poses[0]) 
-                #rospy.sleep(1) 
-		#self.client.wait_for_result()
-                #rospy.loginfo("move to pos1")      
-                #self.moving(self.base_poses[1])        # To Do Gegner verfolgen 
+
+        self.pose_movement()
 
         rospy.spin()
 
-    def apriltag_cb(self,data):
+    def pose_movement(self):
+        self.posNo = (self.posNo+1)%len(self.base_poses)  
+        self.moving(self.base_poses[self.posNo])
+        rospy.loginfo("pose_movement")
+        
 
+
+
+    def apriltag_cb(self,data):
+    # rospy.loginfo(data.detections)
         if data.detections:
             aktuelleZeit = rospy.get_time()
             
-            if aktuelleZeit - self.letzterSchuss >= 10:            
+            if aktuelleZeit - self.letzterSchuss >= 3:            
                 rospy.loginfo("april tag gefunden") 
                 self.sortedDetections = sorted(data.detections, key=lambda tag: self.abstand(tag))
                 rospy.loginfo(self.abstand(self.sortedDetections[0]))
-                if self.abstand(self.sortedDetections[0]) < 5:
+                if self.abstand(self.sortedDetections[0]) < 1:
                     rospy.loginfo("Foto geschossen")
                     self.knipsen() 
                     self.letzterSchuss = rospy.get_time() 
@@ -86,9 +87,12 @@ class LaserTag:
                 rospy.loginfo(self.sortedDetections[0].id)
                 self.moving(self.get_pose())
                 rospy.loginfo("angekommen")
-                self.start_movement()
+                #data.detections = None
+                self.pose_movement()
             else:
                  rospy.loginfo("Zeit bis naechster Schuss: %f" % ( 10 - (aktuelleZeit - self.letzterSchuss))) 
+        else:
+            rospy.loginfo("is empty")
    
     def camera_info_cb(self,data):
         self.camera_info = data
@@ -145,7 +149,10 @@ class LaserTag:
         tag_pose.target_pose.header.frame_id = 'map'
         self.client.send_goal(tag_pose)
         #rospy.sleep(1)
+        rospy.loginfo("waiting for result")
         self.client.wait_for_result()
+        rospy.loginfo("moving beendet")
+        
         #rospy.sleep(1)
 
            
