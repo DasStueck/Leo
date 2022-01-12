@@ -59,9 +59,9 @@ class LaserTag:
         if self.startmove:        
             while not self.sortedDetections: 
                 rospy.loginfo("move to pos0")  
-                rospy.sleep(3)              
+                #rospy.sleep(3)              
                 self.moving(self.base_poses[0]) 
-                rospy.sleep(1) 
+                #rospy.sleep(1) 
 		#self.client.wait_for_result()
                 #rospy.loginfo("move to pos1")      
                 #self.moving(self.base_poses[1])        # To Do Gegner verfolgen 
@@ -144,9 +144,9 @@ class LaserTag:
         tag_pose.target_pose.pose.orientation.w = gp.pose.orientation.w;
         tag_pose.target_pose.header.frame_id = 'map'
         self.client.send_goal(tag_pose)
-        rospy.sleep(1)
+        #rospy.sleep(1)
         self.client.wait_for_result()
-        rospy.sleep(1)
+        #rospy.sleep(1)
 
            
         # return client.get_result()

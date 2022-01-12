@@ -1,0 +1,116 @@
+20220105 TEsts
+
+1
+ zu Base_poses[0] fahren
+ ggf. abbrechen und Tags verfolgen
+2
+ Kommentare rausnehmen
+ und zwischen Positionen alternieren
+ (client wait for result?)
+
+!!! Neue Pose nicht überladen
+	braucht Rechenzeit
+ Pose nicht in einem Ziel setzen, 50cm Abstand sonst keine Movement.
+
+HEUTE GIT HUB :D
+die phasen
+
+git status #checkt Änderungen
+git diff # zeigt Änderungen an
+git add "name der Datei" #added geänderte Datei
+git commit 
+git push  # lädt Änderungen hoch
+
+
+
+Aufgabe 3 
+- Map ist geschädigt -> konnten wir nicht wiederherstellen, mussten wir neu aufnehmen.
+-  
+
+
+
+Aufgabe 4 
+todo
+
+    
+    Position von Tags auf der Map bestimmen (TF Transform) ✓
+	https://tams.informatik.uni-hamburg.de/lectures/2021ws/praktikum/mobileRob/doc/Coordinate_Systems.pdf
+	(Seite 11 f)	
+
+		--> Tag pos ✓
+		--> Move Base nutzen ✓ 
+		--> Tags folgen ✓	TIMER KAPUTT rospy.time maybe python 2 xD
+
+    Move Sequenzen     
+        Automatische Suche nach Gegnern * COSTMAP AUTOCLEAR
+		taggerInfo.py Starten für Infos über Abstand und header
+        Gegner verfolgen ✓ 
+		(Drehen und Suchen)
+
+    Objekte auf der Map differenzieren    
+        bewegliche Objekte sortieren
+
+	Daten an Master verschicken *✓
+    timing für Schüsse finden
+    Orientierung für Schüsse optimieren
+    Stillstand von Tags erkennen und ausnutzen
+    Scanner hinter uns
+    nach Schuss strategische Flucht
+    Potentiell abhängig von Gegnerzahl agieren
+
+
+
+
+
+
+
+
+[INFO] [1637767092.953037]: header: 
+  seq: 134
+  stamp: 
+    secs: 1637767092
+    nsecs: 925308356
+  frame_id: "camera_rgb_optical_frame"
+detections: []
+
+
+
+MIT TAG:
+
+
+[INFO] [1637767167.360516]: header: 
+  seq: 2369
+  stamp: 
+    secs: 1637767167
+    nsecs: 333211222
+  frame_id: "camera_rgb_optical_frame"
+detections: 
+  - 
+    id: [1]
+    size: [0.08]
+    pose: 
+      header: 
+        seq: 2369
+        stamp: 
+          secs: 1637767167
+          nsecs: 333211222
+        frame_id: "camera_rgb_optical_frame"
+      pose: 
+        pose: 
+          position: 
+            x: -0.0887540788308
+            y: 0.0440021469232
+            z: 0.998368507549
+          orientation: 
+            x: 0.99420566374
+            y: 0.0471838011411
+            z: 0.0409246140157
+            w: 0.0874869308226
+        covariance: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+*score* // Das was wir schicken müssen
+Header header
+int8 total
+int8 align
+int8 center
+int8 distance
