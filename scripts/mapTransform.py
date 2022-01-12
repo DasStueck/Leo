@@ -64,7 +64,7 @@ class LaserTag:
                 rospy.sleep(1) 
 		#self.client.wait_for_result()
                 #rospy.loginfo("move to pos1")      
-                #self.moving(self.base_poses[1])        # To Do Gegner Verfolgen 
+                #self.moving(self.base_poses[1])        # To Do Gegner verfolgen 
 
         rospy.spin()
 
