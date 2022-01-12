@@ -1,0 +1,82 @@
+node move_base
+	
+topics
+
+/move_base/goal
+/navigation_velocity_smoother/raw_cmd_vel
+
+
+
+
+Type: move_base_msgs/MoveBaseActionGoal
+
+Publishers: 
+ * /move_base (http://leo:44219/)
+
+Subscribers: 
+ * /move_base (http://leo:44219/)
+
+
+(MoveBaseActionGoal)
+header: 
+  seq: 3
+  stamp: 
+    secs: 1636560663
+    nsecs: 924198397
+  frame_id: ''
+goal_id: 
+  stamp: 
+    secs: 0
+    nsecs:         0
+  id: ''
+goal: 
+  target_pose: 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1636559906
+        nsecs: 174587228
+      frame_id: "map"
+    pose: 
+      position: 
+        x: 0.450162410736
+        y: 0.414079189301
+        z: 0.0
+      orientation: 
+        x: 0.0
+        y: 0.0
+        z: 0.860474635001
+        w: 0.509493280151
+
+
+8steinhe@tams95:~$ rostopic echo /amcl_pose
+header: 
+  seq: 419
+  stamp: 
+    secs: 1636560864
+    nsecs: 992227940
+  frame_id: "map"
+pose: 
+  pose: 
+    position: 
+      x: 1.2445679483
+      y: 0.941915114303
+      z: 0.0
+    orientation: 
+      x: 0.0
+      y: 0.0
+      z: 0.398337528608
+      w: 0.917238907429
+  covariance: [0.0007951655721445405, -0.0001759108926848718, 0.0, 0.0, 0.0, 0.0, -0.0001759108926848718, 0.0013615131928534918, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0006790991918458547]
+
+
+8steinhe@tams95:~$ rostopic info /amcl_pose
+Type: geometry_msgs/PoseWithCovarianceStamped
+
+Publishers: 
+ * /amcl (http://leo:38163/)
+
+
+
+
+

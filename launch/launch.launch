@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+ 
+    <include file="$(find rpc_game_client)/launch/game_client.launch">
+    </include>
+    <include file="$(find tams_turtlebot_bringup)/launch/tams_turtlebot.launch">
+    </include>
+    <include file="$(find tams_turtlebot_navigation)/launch/navigation.launch">
+    <arg name="map" value="$(find leo)/maps/MapF3A.yaml"/>
+	</include>
+	<include file="$(find apriltag_ros)/launch/continuous_detection.launch">
+    <arg name="camera_name" default="/camera/rgb" />
+    <arg name="image_topic" default="/image_rect_color" />
+    </include>
+
+</launch>
+
