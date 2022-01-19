@@ -78,14 +78,17 @@ class LaserTag:
                 rospy.loginfo("april tag gefunden") 
                 self.sortedDetections = sorted(data.detections, key=lambda tag: self.abstand(tag))
                 rospy.loginfo(self.abstand(self.sortedDetections[0]))
+                rospy.loginfo(data.detections)
+                self.apriltag = data
                 if self.abstand(self.sortedDetections[0]) < 1:
                     rospy.loginfo("Foto geschossen")
                     self.knipsen() 
                     self.letzterSchuss = rospy.get_time() 
-                    return
-                self.apriltag = data
+                    return               
                 rospy.loginfo(self.sortedDetections[0].id)
                 self.moving(self.get_pose())
+                self.apriltag = None  
+                self.sortedDetections = None             
                 rospy.loginfo("angekommen")
                 #data.detections = None
                 self.pose_movement()
@@ -103,7 +106,9 @@ class LaserTag:
     def knipsen(self):
         ps = self.rpc_game_service(self.compressed_image,self.camera_info)
         rospy.loginfo(ps)
+        rospy.loginfo('ps')
         self.sortedDetections = None
+        self.apriltag = None
         
 
 
