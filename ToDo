@@ -1,5 +1,12 @@
 20220105 TEsts
 
+
+	Punkte auf map wählen
+	costmap clear testen
+	Screenshots machen
+
+
+
 NÄCHSTES MAL SCREENSHOTS
 
 1
@@ -27,7 +34,7 @@ die phasen
 git status #checkt Änderungen
 git diff # zeigt Änderungen an
 git add "name der Datei" #added geänderte Datei
-git commit 
+git commit -m "kommentar"
 git push  # lädt Änderungen hoch
 
 
